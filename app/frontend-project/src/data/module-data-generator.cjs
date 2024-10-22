@@ -33,6 +33,10 @@ function getRandomPlate() {
   return plate;
 }
 
+function getRandomRating() {
+  return Math.floor(Math.random() * 11);
+}
+
 fs.readFile("./brands.txt", "utf8", (err, data) => {
   if (err) {
     console.error("Error reading car brand file: ", err);
@@ -54,6 +58,7 @@ fs.readFile("./brands.txt", "utf8", (err, data) => {
       color: ["red", "blue", "white", "silver", "black"][
         Math.floor(Math.random() * 5)
       ],
+      rating: getRandomRating(),
     };
 
     content += `  ${JSON.stringify(car)},\n`;

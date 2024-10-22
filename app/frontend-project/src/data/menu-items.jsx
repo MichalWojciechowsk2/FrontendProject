@@ -1,6 +1,7 @@
 import Home from "../pages/Home.jsx";
 import Lab1 from "../pages/Lab1.jsx";
 import Lab2 from "../pages/Lab2.jsx";
+import Lab3 from "../pages/Lab3.jsx";
 
 const menuItems = [
   {
@@ -23,6 +24,13 @@ const menuItems = [
     url: "/lab2/1",
     urlPattern: "/lab2/:id",
     element: <Lab2></Lab2>,
+  },
+  {
+    id: 4,
+    label: "Labolatorium3",
+    url: "/lab3",
+    urlPattern: "/lab3",
+    element: <Lab3></Lab3>,
   },
 ];
 
