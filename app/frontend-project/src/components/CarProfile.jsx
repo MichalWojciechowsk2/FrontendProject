@@ -1,20 +1,11 @@
-import React from "react";
-// import { useState } from "react";
+import React, { useContext } from "react";
 import RatingBar from "./RatingBar";
-import AppReducer from "../data/AppReducer";
+import AppContext from "../data/AppContext";
 
-const CarProfile = ({ car, dispatch }) => {
-  // const [rating, setRating] = useState(car.rating);
-
-  // const handleRateClick = () => {
-  //   if (rating == 10) {
-  //     setRating(0);
-  //     console.log("res");
-  //   } else {
-  //     console.log("+1");
-  //     setRating(rating + 1);
-  //   }
-  // };
+const CarProfile = ({ car }) => {
+  const { dispatch } = useContext(AppContext);
+  // const context = useContext(AppContext);
+  // const dispatch = context.dispatch;
 
   return (
     <div className="car-profile border p-3 mb-3">
@@ -47,7 +38,7 @@ const CarProfile = ({ car, dispatch }) => {
           onClick={() => {
             dispatch({
               type: "edit",
-              id: id,
+              id: car.id,
             });
           }}
         >

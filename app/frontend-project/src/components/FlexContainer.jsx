@@ -1,10 +1,14 @@
-import React from "react";
-import { Card } from "react-bootstrap"; // Dodano import komponentu Card
+import React, { useContext } from "react";
+import { Card } from "react-bootstrap";
+import AppContext from "../data/AppContext";
 
-const FlexContainer = ({ element: Element, data }) => {
+const FlexContainer = ({ element: Element }) => {
+  // const { items, dispatch } = useContext(AppContext);
+  const context = useContext(AppContext);
+  const items = context.items;
   return (
     <div className="d-flex flex-wrap">
-      {data.map((car) => (
+      {items.map((car) => (
         <Card
           style={{ width: `18rem` }}
           className="border mb-3 p-3 ms-3"
