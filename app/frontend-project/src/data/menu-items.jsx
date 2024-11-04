@@ -2,7 +2,6 @@ import Home from "../pages/Home.jsx";
 import Lab1 from "../pages/Lab1.jsx";
 import Lab2 from "../pages/Lab2.jsx";
 import Lab3 from "../pages/Lab3.jsx";
-import AddObjectForm from "../components/AddObjectForm.jsx";
 
 const menuItems = [
   {
@@ -32,13 +31,6 @@ const menuItems = [
     url: "/lab3",
     urlPattern: "/lab3",
     element: <Lab3></Lab3>,
-  },
-  {
-    id: 5,
-    label: "Labolatorium4(Add object)",
-    url: "/lab4/add",
-    urlPattern: "/lab4/add",
-    element: <AddObjectForm></AddObjectForm>,
   },
 ];
 
