@@ -1,17 +1,36 @@
+import React, { useReducer } from "react";
 import "./App.css";
-import CarProfile from "../lab01/CarProfile";
-import { data } from "../lab01/module-data";
+import NotFound from "./pages/NotFound";
+import menuItems from "./data/menu-items";
+import RootLayout from "./layouts/RootLayout";
+import { Routes, Route } from "react-router-dom";
+import AppContext from "./data/AppContext";
+import AppReducer from "./data/AppReducer";
+import { data } from "./data/module-data.jsx";
+import FlexContainer from "./components/FlexContainer";
 
 function App() {
+  const initialState = { items: data };
+  const [state, appDispatch] = useReducer(AppReducer, initialState);
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Car List</h1>
-        {data.map((car) => (
-          <CarProfile key={car.id} car={car} />
-        ))}
-      </header>
-    </div>
+    <>
+      <AppContext.Provider
+        value={{ items: state.items, dispatch: appDispatch }}
+      >
+        <RootLayout items={menuItems}>
+          <Routes>
+            {menuItems.map((item) => (
+              <Route
+                key={item.id}
+                path={item.urlPattern}
+                element={item.element}
+              />
+            ))}
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+        </RootLayout>
+      </AppContext.Provider>
+    </>
   );
 }
 

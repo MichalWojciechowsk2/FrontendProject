@@ -33,7 +33,11 @@ function getRandomPlate() {
   return plate;
 }
 
-fs.readFile("./lab01/brands.txt", "utf8", (err, data) => {
+function getRandomRating() {
+  return Math.floor(Math.random() * 11);
+}
+
+fs.readFile("./brands.txt", "utf8", (err, data) => {
   if (err) {
     console.error("Error reading car brand file: ", err);
     return;
@@ -54,6 +58,7 @@ fs.readFile("./lab01/brands.txt", "utf8", (err, data) => {
       color: ["red", "blue", "white", "silver", "black"][
         Math.floor(Math.random() * 5)
       ],
+      rating: getRandomRating(),
     };
 
     content += `  ${JSON.stringify(car)},\n`;
@@ -61,7 +66,7 @@ fs.readFile("./lab01/brands.txt", "utf8", (err, data) => {
 
   content += "];\n";
 
-  fs.writeFile("./lab01/module-data.jsx", content, (err) => {
+  fs.writeFile("./module-data.jsx", content, (err) => {
     if (err) {
       console.error("File save error:", err);
     } else {

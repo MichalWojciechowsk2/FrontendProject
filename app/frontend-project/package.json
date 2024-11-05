@@ -7,12 +7,14 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "dev": "node ./lab01/module-data-generator.cjs 10 && vite"
+    "dev": "node ../../app/frontend-project/src/data/module-data-generator.cjs 10 && vite"
   },
   "dependencies": {
-    "bootstrap": "^4.1.2",
+    "bootstrap": "^4.6.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-bootstrap": "^2.10.5",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
