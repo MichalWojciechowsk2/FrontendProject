@@ -12,10 +12,13 @@ export default function AppReducer(state, action) {
           item.id === action.payload.id ? { ...item, ...action.payload } : item
         ),
       };
-    case "rate": {
-      return state.map((car) =>
-        car.id === action.id ? { ...car, rating: action.rating } : car
-      );
+    case "RATE_OBJECT": {
+      return {
+        ...state,
+        items: state.items.map((car) =>
+          car.id === action.id ? { ...car, rating: action.rating } : car
+        ),
+      };
     }
     case "DELETE_OBJECT": {
       return {

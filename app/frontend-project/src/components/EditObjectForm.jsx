@@ -23,7 +23,7 @@ const EditObjectForm = () => {
   }, [id, items, setValue]);
 
   const onSubmit = (data) => {
-    console.log("Updating object with data:", data);
+    console.log("Updating object with data:", data); //TEST
 
     dispatch({
       type: "UPDATE_OBJECT",
