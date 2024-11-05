@@ -14,11 +14,13 @@ const NavBarMenu = ({ items }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Labolatoria" id="basic-nav-dropdown">
-              {items.map((item) => (
-                <NavDropdown.Item as={Link} to={item.url} key={item.id}>
-                  {item.label}
-                </NavDropdown.Item>
-              ))}
+              {items
+                .filter((item) => item.inNavbar) // Tylko elementy z inNavbar: true
+                .map((item) => (
+                  <NavDropdown.Item as={Link} to={item.url} key={item.id}>
+                    {item.label}
+                  </NavDropdown.Item>
+                ))}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

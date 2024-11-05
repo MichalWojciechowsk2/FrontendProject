@@ -1,20 +1,23 @@
-import React from "react";
-// import { useState } from "react";
+import React, { useContext } from "react";
 import RatingBar from "./RatingBar";
-import AppReducer from "../data/AppReducer";
+import AppContext from "../data/AppContext";
+import { useNavigate } from "react-router-dom";
 
-const CarProfile = ({ car, dispatch }) => {
-  // const [rating, setRating] = useState(car.rating);
+const CarProfile = ({ car }) => {
+  const { dispatch } = useContext(AppContext);
+  const navigate = useNavigate();
 
-  // const handleRateClick = () => {
-  //   if (rating == 10) {
-  //     setRating(0);
-  //     console.log("res");
-  //   } else {
-  //     console.log("+1");
-  //     setRating(rating + 1);
-  //   }
-  // };
+  const handleDelete = () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this car?"
+    );
+    if (confirmDelete) {
+      dispatch({
+        type: "DELETE_OBJECT",
+        id: car.id,
+      });
+    }
+  };
 
   return (
     <div className="car-profile border p-3 mb-3">
@@ -42,40 +45,27 @@ const CarProfile = ({ car, dispatch }) => {
         <RatingBar rate={car.rating} />
       </div>
       <div className="d-flex justify-content-between">
-        <div
+        <button
           className="btn btn-primary"
-          onClick={() => {
-            dispatch({
-              type: "edit",
-              id: id,
-            });
-          }}
+          onClick={() => navigate(`/lab4/edit/${car.id}`)}
         >
           Edit
-        </div>
-        <div
-          className="btn btn-danger"
-          onClick={() => {
-            dispatch({
-              type: "delete",
-              id: car.id,
-            });
-          }}
-        >
+        </button>
+        <button className="btn btn-danger" onClick={handleDelete}>
           Delete
-        </div>
-        <div
+        </button>
+        <button
           className="btn btn-warning"
           onClick={() => {
             dispatch({
-              type: "rate",
+              type: "RATE_OBJECT",
               id: car.id,
               rating: car.rating === 10 ? 0 : car.rating + 1,
             });
           }}
         >
           Rate
-        </div>
+        </button>
       </div>
     </div>
   );
