@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap"; // Dodano import komponentu Card
 const FlexContainer = ({ element: Element, data }) => {
   return (
     <div className="d-flex flex-wrap">
+      <div></div>
       {data.map((car) => (
         <Card
           style={{ width: `18rem` }}
