@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import AppContext from "./data/AppContext";
 import AppReducer from "./data/AppReducer";
 import { data } from "./data/module-data.jsx";
-import FlexContainer from "./components/FlexContainer";
+import EditObjectForm from "./components/EditObjectForm.jsx";
 
 function App() {
   const initialState = { items: data };

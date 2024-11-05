@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form, FormControl } from "react-bootstrap";
 import AppContext from "../data/AppContext";
+import { useNavigate } from "react-router-dom";
 
 const AddObjectForm = () => {
   const [errors, setErrors] = useState([]);
   const [isSending, setSending] = useState(false);
   const { dispatch, items } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const onSubmitFunction = async (e) => {
     e.preventDefault();
@@ -39,6 +41,8 @@ const AddObjectForm = () => {
     setSending(false);
 
     e.target.reset();
+
+    navigate("/lab4");
   };
 
   return (
